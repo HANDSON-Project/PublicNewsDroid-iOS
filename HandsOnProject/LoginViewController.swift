@@ -10,8 +10,8 @@ import UIKit
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var userIdTextField: UITextField!
-    
     @IBOutlet weak var userPasswordTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -20,6 +20,10 @@ class LoginViewController: UIViewController {
         
         // MARK: need user verification.
         
+//        if let id = userIdTextField.text, let password = userPasswordTextField.text {
+//            print(id, password)
+//        }
+//
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "Chat")
         vc.modalPresentationStyle = .fullScreen

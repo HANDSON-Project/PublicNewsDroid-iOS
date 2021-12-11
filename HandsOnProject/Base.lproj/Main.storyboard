@@ -170,6 +170,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="지역 뉴스" id="8y7-Zq-pZI">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="oJv-fx-HWo">
+                            <connections>
+                                <segue destination="XBe-Qr-zbm" kind="show" id="qF0-pl-1Ou"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="gMr-Ww-Wo1">
                             <color key="tintColor" red="0.1764705882" green="0.19215686269999999" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
@@ -305,6 +310,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="QJz-CC-tyP">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SXE-Co-DGy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tabBarController storyboardIdentifier="Chat" automaticallyAdjustsScrollViewInsets="NO" id="0xx-Ii-HhR" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="A34-W7-Ujv"/>
@@ -315,10 +321,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="phE-Be-INs" kind="relationship" relationship="viewControllers" id="WYL-vL-XL2"/>
-                        <segue destination="9CB-TY-xr9" kind="relationship" relationship="viewControllers" id="PRT-ho-Czk"/>
                     </connections>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SXE-Co-DGy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1051" y="-175"/>
         </scene>
@@ -448,25 +452,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ayd-Np-57C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3910.144927536232" y="-520.3125"/>
-        </scene>
-        <!--뉴스 작성-->
-        <scene sceneID="QB3-kf-WwX">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9CB-TY-xr9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="뉴스 작성" id="Dgr-mb-nBi"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5bw-ph-owK">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="XBe-Qr-zbm" kind="relationship" relationship="rootViewController" id="wYr-vk-foT"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NB2-DT-NrC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2132" y="181"/>
         </scene>
         <!--뉴스 목록-->
         <scene sceneID="ln5-Ak-pWt">
