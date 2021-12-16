@@ -181,7 +181,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="usersTableView" destination="1XW-Fq-fxC" id="FEH-Ax-ea4"/>
-                        <segue destination="tGX-b2-n2L" kind="show" id="WbU-8I-W6R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WLc-ut-AEl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -310,7 +309,6 @@
         <!--Tab Bar Controller-->
         <scene sceneID="QJz-CC-tyP">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SXE-Co-DGy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tabBarController storyboardIdentifier="Chat" automaticallyAdjustsScrollViewInsets="NO" id="0xx-Ii-HhR" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="A34-W7-Ujv"/>
@@ -323,6 +321,7 @@
                         <segue destination="phE-Be-INs" kind="relationship" relationship="viewControllers" id="WYL-vL-XL2"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SXE-Co-DGy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1051" y="-175"/>
         </scene>
@@ -399,46 +398,61 @@
         <!--Chatting View Controller-->
         <scene sceneID="c3Y-Va-Hu0">
             <objects>
-                <viewController id="tGX-b2-n2L" customClass="ChattingViewController" customModule="HandsOnProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChattingViewController" id="tGX-b2-n2L" customClass="ChattingViewController" customModule="HandsOnProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hp2-5z-quE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="o4A-EU-DKw">
-                                <rect key="frame" x="20" y="118" width="374" height="150"/>
+                                <rect key="frame" x="20" y="74" width="374" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="aeD-Wv-CvG"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Qtj-KG-XHD">
-                                <rect key="frame" x="20" y="288" width="374" height="300"/>
-                                <color key="backgroundColor" red="0.91764705882352937" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="300" id="zp4-Bj-yns"/>
-                                </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="82o-kE-iNs">
-                                <rect key="frame" x="0.0" y="608" width="414" height="185"/>
+                                <rect key="frame" x="0.0" y="692" width="414" height="150"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="DFA-QI-ied"/>
+                                </constraints>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="조회수: 50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jUd-5x-tTX">
+                                <rect key="frame" x="50" y="641" width="74" height="31"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 뉴스는 무엇일까요? 다같이 새로운 뉴스를 작성해봅시다" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBd-kN-hlM">
+                                <rect key="frame" x="20" y="249" width="365" height="372"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I2a-wg-30M">
+                                <rect key="frame" x="144" y="641" width="89" height="31"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="좋아요 : 20"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oIq-Zp-jgs"/>
                         <color key="backgroundColor" red="0.68627450980000004" green="0.84313725490000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="oIq-Zp-jgs" firstAttribute="bottom" secondItem="82o-kE-iNs" secondAttribute="bottom" constant="20" id="0pc-SV-bnU"/>
-                            <constraint firstItem="Qtj-KG-XHD" firstAttribute="top" secondItem="o4A-EU-DKw" secondAttribute="bottom" constant="20" id="9Id-mR-PkH"/>
                             <constraint firstItem="o4A-EU-DKw" firstAttribute="leading" secondItem="oIq-Zp-jgs" secondAttribute="leading" constant="20" id="Abt-hT-1Lr"/>
+                            <constraint firstItem="oIq-Zp-jgs" firstAttribute="trailing" secondItem="JBd-kN-hlM" secondAttribute="trailing" constant="29" id="CS3-N0-8G0"/>
+                            <constraint firstItem="I2a-wg-30M" firstAttribute="leading" secondItem="jUd-5x-tTX" secondAttribute="trailing" constant="20" id="HlM-mh-Rmj"/>
                             <constraint firstItem="oIq-Zp-jgs" firstAttribute="trailing" secondItem="o4A-EU-DKw" secondAttribute="trailing" constant="20" id="IFo-gQ-mnW"/>
-                            <constraint firstItem="oIq-Zp-jgs" firstAttribute="trailing" secondItem="Qtj-KG-XHD" secondAttribute="trailing" constant="20" id="Mxu-IY-p67"/>
+                            <constraint firstItem="JBd-kN-hlM" firstAttribute="leading" secondItem="oIq-Zp-jgs" secondAttribute="leading" constant="20" id="JEN-ms-sm6"/>
                             <constraint firstItem="82o-kE-iNs" firstAttribute="leading" secondItem="oIq-Zp-jgs" secondAttribute="leading" id="QOB-AX-nKu"/>
                             <constraint firstItem="o4A-EU-DKw" firstAttribute="top" secondItem="oIq-Zp-jgs" secondAttribute="top" constant="30" id="YbF-hY-yr8"/>
-                            <constraint firstItem="Qtj-KG-XHD" firstAttribute="leading" secondItem="oIq-Zp-jgs" secondAttribute="leading" constant="20" id="hG5-Qi-RF9"/>
-                            <constraint firstItem="82o-kE-iNs" firstAttribute="top" secondItem="Qtj-KG-XHD" secondAttribute="bottom" constant="20" id="kEg-1I-vsz"/>
+                            <constraint firstItem="jUd-5x-tTX" firstAttribute="top" secondItem="JBd-kN-hlM" secondAttribute="bottom" constant="20" id="byF-oK-ZeO"/>
+                            <constraint firstItem="I2a-wg-30M" firstAttribute="top" secondItem="JBd-kN-hlM" secondAttribute="bottom" constant="20" id="drL-B2-XKv"/>
+                            <constraint firstItem="JBd-kN-hlM" firstAttribute="top" secondItem="o4A-EU-DKw" secondAttribute="bottom" constant="25" id="gAH-uY-jeo"/>
                             <constraint firstItem="oIq-Zp-jgs" firstAttribute="trailing" secondItem="82o-kE-iNs" secondAttribute="trailing" id="lHz-XC-sX6"/>
+                            <constraint firstItem="jUd-5x-tTX" firstAttribute="leading" secondItem="oIq-Zp-jgs" secondAttribute="leading" constant="50" id="pCm-0I-4c6"/>
+                            <constraint firstItem="82o-kE-iNs" firstAttribute="top" secondItem="I2a-wg-30M" secondAttribute="bottom" constant="20" id="ymL-tj-zY5"/>
+                            <constraint firstItem="82o-kE-iNs" firstAttribute="top" secondItem="jUd-5x-tTX" secondAttribute="bottom" constant="20" id="zQP-Og-byi"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Hqf-Nw-8vF">
@@ -448,6 +462,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="newsContent" destination="JBd-kN-hlM" id="iHY-c8-UuJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ayd-Np-57C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

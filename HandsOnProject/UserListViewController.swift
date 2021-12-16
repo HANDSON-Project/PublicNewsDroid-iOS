@@ -30,15 +30,17 @@ extension UserListViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell", for: indexPath) as? UserTableViewCell else { return UITableViewCell() }
         
         // MARK: cell init things.
-        
-        cell.userNameLabel.text = "asdf"
+        cell.userStatusLabel.text = "오늘의 뉴스"
+        cell.userNameLabel.text = "오늘의 특별한 장소를 소개합니다"
 
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        <#code#>
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "ChattingViewController") as? ChattingViewController else { return }
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

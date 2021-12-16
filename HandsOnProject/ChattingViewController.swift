@@ -9,9 +9,16 @@ import UIKit
 
 class ChattingViewController: UIViewController {
 
+    var newsTitle = "제목"
+    
+    @IBOutlet weak var newsContent: UILabel!
+    override func viewDidLayoutSubviews() {
+        newsContent.sizeToFit()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("helo")
+        title = newsTitle
+        
 
     }
     
