@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		881E214B2755B79F002E1D13 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 881E214A2755B79F002E1D13 /* Alamofire */; };
 		8831808C276C51CD008544AD /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8831808B276C51CD008544AD /* Kingfisher */; };
+		8831808E276C6441008544AD /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8831808D276C6440008544AD /* CommentsViewController.swift */; };
+		88318090276C64E0008544AD /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8831808F276C64E0008544AD /* CommentTableViewCell.swift */; };
+		88318093276C660D008544AD /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 88318092276C660D008544AD /* IQKeyboardManagerSwift */; };
 		884CB3122742245C006AB2DF /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 884CB3112742245C006AB2DF /* AddViewController.swift */; };
 		888036ED27412510006E5254 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888036EC27412510006E5254 /* AppDelegate.swift */; };
 		888036EF27412510006E5254 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888036EE27412510006E5254 /* SceneDelegate.swift */; };
@@ -26,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8831808D276C6440008544AD /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		8831808F276C64E0008544AD /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		884CB3112742245C006AB2DF /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		888036E927412510006E5254 /* HandsOnProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandsOnProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		888036EC27412510006E5254 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +54,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8831808C276C51CD008544AD /* Kingfisher in Frameworks */,
+				88318093276C660D008544AD /* IQKeyboardManagerSwift in Frameworks */,
 				88CDCDE5276B1FA800DD5AF6 /* SwiftyJSON in Frameworks */,
 				881E214B2755B79F002E1D13 /* Alamofire in Frameworks */,
 			);
@@ -90,6 +96,8 @@
 				888036FA27412513006E5254 /* Info.plist */,
 				884CB3112742245C006AB2DF /* AddViewController.swift */,
 				88C61915274B873B00724AA0 /* Location.swift */,
+				8831808D276C6440008544AD /* CommentsViewController.swift */,
+				8831808F276C64E0008544AD /* CommentTableViewCell.swift */,
 			);
 			path = HandsOnProject;
 			sourceTree = "<group>";
@@ -114,6 +122,7 @@
 				881E214A2755B79F002E1D13 /* Alamofire */,
 				88CDCDE4276B1FA800DD5AF6 /* SwiftyJSON */,
 				8831808B276C51CD008544AD /* Kingfisher */,
+				88318092276C660D008544AD /* IQKeyboardManagerSwift */,
 			);
 			productName = HandsOnProject;
 			productReference = 888036E927412510006E5254 /* HandsOnProject.app */;
@@ -147,6 +156,7 @@
 				881E21492755B79F002E1D13 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				88CDCDE3276B1FA800DD5AF6 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				8831808A276C51CD008544AD /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				88318091276C660D008544AD /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 888036EA27412510006E5254 /* Products */;
 			projectDirPath = "";
@@ -177,10 +187,12 @@
 			files = (
 				884CB3122742245C006AB2DF /* AddViewController.swift in Sources */,
 				88C61916274B873B00724AA0 /* Location.swift in Sources */,
+				8831808E276C6441008544AD /* CommentsViewController.swift in Sources */,
 				8880370D27412563006E5254 /* RegisterViewController.swift in Sources */,
 				8880370B27412563006E5254 /* ChattingViewController.swift in Sources */,
 				888036ED27412510006E5254 /* AppDelegate.swift in Sources */,
 				8880370827412563006E5254 /* UserListViewController.swift in Sources */,
+				88318090276C64E0008544AD /* CommentTableViewCell.swift in Sources */,
 				8880370C27412563006E5254 /* UserTableViewCell.swift in Sources */,
 				8880370727412563006E5254 /* ChatViewController.swift in Sources */,
 				8880370927412563006E5254 /* LoginViewController.swift in Sources */,
@@ -420,6 +432,14 @@
 				kind = branch;
 			};
 		};
+		88318091276C660D008544AD /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		88CDCDE3276B1FA800DD5AF6 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
@@ -440,6 +460,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8831808A276C51CD008544AD /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		88318092276C660D008544AD /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88318091276C660D008544AD /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 		88CDCDE4276B1FA800DD5AF6 /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;

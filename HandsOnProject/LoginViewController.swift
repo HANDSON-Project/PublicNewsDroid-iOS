@@ -27,6 +27,8 @@ class LoginViewController: UIViewController {
         }
 //
         
+//        createNews()
+        
     }
     
     
@@ -83,6 +85,47 @@ class LoginViewController: UIViewController {
         }
 
     
+    
+    func createNews() {
+                   let url = "https://sindy-nick.site/app/news/likes"
+                   var request = URLRequest(url: URL(string: url)!)
+                   request.httpMethod = "POST"
+                   request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                   request.timeoutInterval = 10
+            
+            let headers: HTTPHeaders = [
+                       "X-ACCESS-TOKEN": "eyJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJ1c2VySWR4Ijo0LCJpYXQiOjE2Mzk2NTI0MzksImV4cCI6MTY0MTEyMzY2OH0.IFNiav3xXeadKLebpgAITM8QHb3HWxsAQW5CoAJGClw"
+                   ]
+                   
+     
+                let parameters = [
+                    
+                        "userIdx":4,
+                        "newsIdx":1
+                    ]
+
+                   // httpBody 에 parameters 추가
+                   do {
+                       request.headers = headers
+                       try request.httpBody = JSONSerialization.data(withJSONObject: parameters, options: [])
+                   } catch {
+                       print("http Body Error")
+                   }
+            
+            
+            AF.request(request).responseString { (response) in
+                       switch response.result {
+                       case .success:
+                           print(request)
+                           print("POST 성공")
+                           print(response.result)
+                       case .failure(let error):
+                           print("🚫 Alamofire Request Error\nCode:\(error._code), Message: \(error.errorDescription!)")
+                       }
+                   }
+   }
+    
+    
     func getUserInfo(userNum: Int, jwt : String)  {
            let url1 = "https://sindy-nick.site/app/user/\(userNum)"
         
@@ -96,14 +139,15 @@ class LoginViewController: UIViewController {
                           case .success(let value):
                               let json = JSON(value)
 //                              print("good")
-//                              print("JSON: \(json)")
+                              print("JSON: \(json)")
                               
                               let result = json["result"]["location"].stringValue
                               
                               let sb = UIStoryboard(name: "Main", bundle: nil)
+                              let nickname = json["result"]["nickname"].stringValue
 
                               let vc = sb.instantiateViewController(withIdentifier: "Chat") as! UserListViewController
-
+                              vc.nickName = nickname
                               vc.jwt = jwt
                               vc.location = result
                               vc.userIdx = userNum

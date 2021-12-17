@@ -16,6 +16,7 @@ class UserListViewController: UIViewController {
     var jwt: String?
     var userIdx: Int?
     var location: String?
+    var nickName: String?
     
     var data: [JSON] = []
     
@@ -38,10 +39,7 @@ class UserListViewController: UIViewController {
                case .success(let value):
                    let json = JSON(value)
                    print("good")
-                   
-                   print(json["result"].arrayValue)
                    self.data = json["result"].arrayValue
-                   
                    DispatchQueue.main.async {
                        self.usersTableView.reloadData()
                    }
@@ -81,11 +79,11 @@ extension UserListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell", for: indexPath) as? UserTableViewCell else { return UITableViewCell() }
         
-        // MARK: cell init things.
         let row = data[indexPath.row]
         cell.userNameLabel.text = row["title"].stringValue
         cell.userStatusLabel.text = row["context"].stringValue
-
+        
+        print(row) // 개시글 데이터
         return cell
     }
     
@@ -95,9 +93,10 @@ extension UserListViewController: UITableViewDelegate, UITableViewDataSource {
         vc.jwt = jwt
         vc.userIdx = userIdx
         vc.newsID = data[indexPath.row]["newsIdx"].intValue
-//        print(data[indexPath.row])
-//        print(data[indexPath.row]["newsIdx"].intValue)
+        vc.nickName = nickName
         
+
+
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -108,104 +107,3 @@ extension UserListViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-
-//{
-//  "result" : [
-//    {
-//      "location" : "서울",
-//      "email" : "tester0@email.com",
-//      "userIdx" : 1,
-//      "nickname" : "테스터",
-//      "password" : "hr08DdPtS\/P2NK2\/jpakHw=="
-//    },
-//    {
-//      "location" : "서울",
-//      "email" : "tester10@email.com",
-//      "userIdx" : 2,
-//      "nickname" : "테스터",
-//      "password" : "hr08DdPtS\/P2NK2\/jpakHw=="
-//    },
-//    {
-//      "location" : "서울",
-//      "email" : "tester1@email.com",
-//      "userIdx" : 3,
-//      "nickname" : "테스터",
-//      "password" : "hr08DdPtS\/P2NK2\/jpakHw=="
-//    },
-//    {
-//      "location" : "서울",
-//      "email" : "tester5@email.com",
-//      "userIdx" : 4,
-//      "nickname" : "테스터",
-//      "password" : "hr08DdPtS\/P2NK2\/jpakHw=="
-//    },
-//    {
-//      "location" : "서울",
-//      "email" : "tester4@email.com",
-//      "userIdx" : 5,
-//      "nickname" : "테스터",
-//      "password" : "hr08DdPtS\/P2NK2\/jpakHw=="
-//    },
-//    {
-//      "location" : "서울",
-//      "email" : "tester7@email.com",
-//      "userIdx" : 8,
-//      "nickname" : "테스터",
-//      "password" : "hr08DdPtS\/P2NK2\/jpakHw=="
-//    }
-//  ],
-//  "message" : "요청에 성공하였습니다.",
-//  "isSuccess" : true,
-//  "code" : 1000
-//}
-
-//
-//{
-//    "isSuccess": true,
-//    "code": 1000,
-//    "message": "요청에 성공하였습니다.",
-//    "result": [
-//        {
-//            "userIdx": 1,
-//            "nickname": "테스터",
-//            "email": "tester0@email.com",
-//            "password": "hr08DdPtS/P2NK2/jpakHw==",
-//            "location": "서울"
-//        },
-//        {
-//            "userIdx": 2,
-//            "nickname": "테스터",
-//            "email": "tester10@email.com",
-//            "password": "hr08DdPtS/P2NK2/jpakHw==",
-//            "location": "서울"
-//        },
-//        {
-//            "userIdx": 3,
-//            "nickname": "테스터",
-//            "email": "tester1@email.com",
-//            "password": "hr08DdPtS/P2NK2/jpakHw==",
-//            "location": "서울"
-//        },
-//        {
-//            "userIdx": 4,
-//            "nickname": "테스터",
-//            "email": "tester5@email.com",
-//            "password": "hr08DdPtS/P2NK2/jpakHw==",
-//            "location": "서울"
-//        },
-//        {
-//            "userIdx": 5,
-//            "nickname": "테스터",
-//            "email": "tester4@email.com",
-//            "password": "hr08DdPtS/P2NK2/jpakHw==",
-//            "location": "서울"
-//        },
-//        {
-//            "userIdx": 8,
-//            "nickname": "테스터",
-//            "email": "tester7@email.com",
-//            "password": "hr08DdPtS/P2NK2/jpakHw==",
-//            "location": "서울"
-//        }
-//    ]
-//}
