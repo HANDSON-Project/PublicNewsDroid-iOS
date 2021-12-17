@@ -25,24 +25,18 @@ class LoginViewController: UIViewController {
             print(email, password)
             login(email: email, password: password)
         }
+//
         
-        
-        
-//        let sb = UIStoryboard(name: "Main", bundle: nil)
-//        let vc = sb.instantiateViewController(withIdentifier: "Chat") as! UserListViewController
-//        
-//        vc.modalPresentationStyle = .fullScreen
-//        navigationController?.pushViewController(vc, animated: true)
     }
     
     
     func login(email: String, password: String) {
-            var url = "https://sindy-nick.site/app/user/log-in"
+            let url = "https://sindy-nick.site/app/user/log-in"
             var request = URLRequest(url: URL(string: url)!)
             request.httpMethod = "POST"
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             request.timeoutInterval = 10
-            
+
             // POST 로 보낼 정보
 //            let params = ["id":"아이디", "pw":"패스워드"] as Dictionary
             let params: [String: String] = [
@@ -55,41 +49,29 @@ class LoginViewController: UIViewController {
             } catch {
                 print("http Body Error")
             }
-            
-       
-        
+
+
+
             AF.request(request).responseString { (response) in
                 switch response.result {
                 case .success(let value):
                     let json = JSON(value)
-                    
+
                     print("POST 성공")
 
-                    
+
                     let innerJSON = JSON(parseJSON: json.stringValue)
                     let k = innerJSON["result"]
-                    
+
                     let code = innerJSON["code"].intValue
                     let jwt = k["jwt"].stringValue
                     let userIdx = k["userIdx"].intValue
-                    
-        
-                    
+
                     if code == 1000{
 
                         print("good to go")
-                        let sb = UIStoryboard(name: "Main", bundle: nil)
                         
-                        let vc = sb.instantiateViewController(withIdentifier: "Chat") as! UserListViewController
-                        
-                        print(jwt, userIdx)
-                        vc.jwt = jwt
-                        vc.userIdx = userIdx
-
-                        vc.modalPresentationStyle = .fullScreen
-                        
-                        self.navigationController?.pushViewController(vc, animated: true)
-
+                        self.getUserInfo(userNum: userIdx, jwt: jwt)
                     }else{
                         print("not good")
                     }
@@ -99,6 +81,46 @@ class LoginViewController: UIViewController {
                 }
             }
         }
+
+    
+    func getUserInfo(userNum: Int, jwt : String)  {
+           let url1 = "https://sindy-nick.site/app/user/\(userNum)"
+        
+        let headers: HTTPHeaders = [
+                  "X-ACCESS-TOKEN":jwt
+              ]
+                  if let encoded = url1.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),let url = URL(string: encoded)
+                   {
+                      AF.request(url, method: .get, headers: headers).validate().responseJSON { response in
+                          switch response.result {
+                          case .success(let value):
+                              let json = JSON(value)
+//                              print("good")
+//                              print("JSON: \(json)")
+                              
+                              let result = json["result"]["location"].stringValue
+                              
+                              let sb = UIStoryboard(name: "Main", bundle: nil)
+
+                              let vc = sb.instantiateViewController(withIdentifier: "Chat") as! UserListViewController
+
+                              vc.jwt = jwt
+                              vc.location = result
+                              vc.userIdx = userNum
+
+                              vc.modalPresentationStyle = .fullScreen
+
+                              self.navigationController?.pushViewController(vc, animated: true)
+                              
+                              
+            
+                          case .failure(let error):
+                              print("not good")
+                              print(error)
+                          }
+                      }
+                   }
+       }
 
     
     func convertToDictionary(text: String) -> [String: Any]? {

@@ -15,16 +15,22 @@ class UserListViewController: UIViewController {
     @IBOutlet weak var usersTableView: UITableView!
     var jwt: String?
     var userIdx: Int?
+    var location: String?
     
-    
+    var data: [JSON] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         usersTableView.delegate = self
         usersTableView.dataSource = self
-
         
-        let url1 = "https://sindy-nick.site/app/user?location=서울"
+        self.title = location
+        
+       getData()
+    }
+    
+    func getData() {
+        let url1 = "https://sindy-nick.site/app/news?location=\(location!)"
        if let encoded = url1.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),let url = URL(string: encoded)
         {
            AF.request(url, method: .get).validate().responseJSON { response in
@@ -32,8 +38,13 @@ class UserListViewController: UIViewController {
                case .success(let value):
                    let json = JSON(value)
                    print("good")
-//                   print("JSON: \(json)")
-//                   print(json["result"].arrayValue)
+                   
+                   print(json["result"].arrayValue)
+                   self.data = json["result"].arrayValue
+                   
+                   DispatchQueue.main.async {
+                       self.usersTableView.reloadData()
+                   }
                    
                case .failure(let error):
                    print("not good")
@@ -48,24 +59,32 @@ class UserListViewController: UIViewController {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let vc = sb.instantiateViewController(withIdentifier: "AddViewController") as! AddViewController
         vc.jwt = jwt
+        vc.location = location
         vc.userIdx = userIdx
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    
+    @IBAction func reloadButton(_ sender: UIBarButtonItem) {
+        getData()
+    }
+    
 }
 
 
 extension UserListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "UserTableViewCell", for: indexPath) as? UserTableViewCell else { return UITableViewCell() }
         
         // MARK: cell init things.
-        cell.userStatusLabel.text = "오늘의 뉴스"
-        cell.userNameLabel.text = "오늘의 특별한 장소를 소개합니다"
+        let row = data[indexPath.row]
+        cell.userNameLabel.text = row["title"].stringValue
+        cell.userStatusLabel.text = row["context"].stringValue
 
         return cell
     }
@@ -75,6 +94,9 @@ extension UserListViewController: UITableViewDelegate, UITableViewDataSource {
         
         vc.jwt = jwt
         vc.userIdx = userIdx
+        vc.newsID = data[indexPath.row]["newsIdx"].intValue
+//        print(data[indexPath.row])
+//        print(data[indexPath.row]["newsIdx"].intValue)
         
         navigationController?.pushViewController(vc, animated: true)
     }

@@ -42,7 +42,7 @@ class RegisterViewController: UIViewController {
     }
     
     func Register(email: String, password: String, nickName: String, location: String) {
-                var url = "https://sindy-nick.site/app/users/sign-up"
+                var url = "https://sindy-nick.site/app/user/sign-up"
                 var request = URLRequest(url: URL(string: url)!)
                 request.httpMethod = "POST"
                 request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -54,7 +54,7 @@ class RegisterViewController: UIViewController {
                     "email": email,
                     "password": password,
                     "nickname" : nickName,
-                    "location": "location"
+                    "location": location
                     
                 ] as Dictionary
 

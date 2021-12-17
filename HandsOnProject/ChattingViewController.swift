@@ -13,6 +13,8 @@ class ChattingViewController: UIViewController {
 
     var jwt: String?
     var userIdx: Int?
+    var newsID:Int?
+    
     
     @IBOutlet weak var newsContent: UILabel!
     override func viewDidLayoutSubviews() {
@@ -21,27 +23,38 @@ class ChattingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(jwt, userIdx, newsID)
         seeCertainNews()
-
+        
+        
     }
     
     func seeCertainNews() {
-        var url1 = "https://sindy-nick.site/app/users?location=서울"
-                if let encoded = url1.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),let url = URL(string: encoded)
-                 {
-                    AF.request(url, method: .get).validate().responseJSON { response in
-                        switch response.result {
-                        case .success(let value):
-                            let json = JSON(value)
-                            print("good")
-                            print("JSON: \(json)")
-                        case .failure(let error):
-                            print("not good")
-                            print(error)
-                        }
-                    }
-                 }
-    }
+        let url1 = "https://sindy-nick.site/app/news/\(newsID!)"
+                  if let encoded = url1.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed),let url = URL(string: encoded)
+                   {
+                      AF.request(url, method: .get).validate().responseJSON { response in
+                          switch response.result {
+                          case .success(let value):
+                              let json = JSON(value)
+                              print("good")
+                              print("JSON: \(json)")
+                              
+                              
+                              DispatchQueue.main.async {
+
+                                  self.title = json["result"]["title"].stringValue
+                                  self.newsContent.text = json["result"]["context"].stringValue
+                              
+                              }
+                          case .failure(let error):
+                              print("not good")
+                              print(error)
+                          }
+                      }
+                   }
+       }
+
     
     @IBAction func reportButtonClicked(_ sender: UIBarButtonItem) {
     }

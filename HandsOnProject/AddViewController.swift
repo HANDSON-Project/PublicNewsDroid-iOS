@@ -17,11 +17,13 @@ class AddViewController: UIViewController {
     
     var jwt: String?
     var userIdx: Int?
+    var location: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(jwt)
         print(userIdx)
+        print(location)
     }
     
     @IBAction func saveButtonClicked(_ sender: UIBarButtonItem) {
@@ -31,9 +33,6 @@ class AddViewController: UIViewController {
             let content = newsTextView.text[titleIndex...]
             createNews(title: String(title), content: String(content))
         }
-        
-        
-        
     }
     
     func createNews(title:String, content: String) {
@@ -53,7 +52,7 @@ class AddViewController: UIViewController {
                     "title": title,
                     "context":content,
                     "image": "DSfasdf",
-                    "location":"서울"] as [String : Any]
+                    "location":location!] as [String : Any]
 
                    // httpBody 에 parameters 추가
                    do {

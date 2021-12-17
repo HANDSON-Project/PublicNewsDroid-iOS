@@ -177,6 +177,9 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="gMr-Ww-Wo1">
                             <color key="tintColor" red="0.1764705882" green="0.19215686269999999" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="reloadButton:" destination="ISS-C3-dip" id="VZr-3P-Mct"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
