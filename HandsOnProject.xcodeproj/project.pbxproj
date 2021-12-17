@@ -17,11 +17,11 @@
 		8880370727412563006E5254 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8880370027412563006E5254 /* ChatViewController.swift */; };
 		8880370827412563006E5254 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8880370127412563006E5254 /* UserListViewController.swift */; };
 		8880370927412563006E5254 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8880370227412563006E5254 /* LoginViewController.swift */; };
-		8880370A27412563006E5254 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8880370327412563006E5254 /* ViewController.swift */; };
 		8880370B27412563006E5254 /* ChattingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8880370427412563006E5254 /* ChattingViewController.swift */; };
 		8880370C27412563006E5254 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8880370527412563006E5254 /* UserTableViewCell.swift */; };
 		8880370D27412563006E5254 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8880370627412563006E5254 /* RegisterViewController.swift */; };
 		88C61916274B873B00724AA0 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C61915274B873B00724AA0 /* Location.swift */; };
+		88CDCDE5276B1FA800DD5AF6 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 88CDCDE4276B1FA800DD5AF6 /* SwiftyJSON */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +36,6 @@
 		8880370027412563006E5254 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		8880370127412563006E5254 /* UserListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		8880370227412563006E5254 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		8880370327412563006E5254 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8880370427412563006E5254 /* ChattingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChattingViewController.swift; sourceTree = "<group>"; };
 		8880370527412563006E5254 /* UserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
 		8880370627412563006E5254 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88CDCDE5276B1FA800DD5AF6 /* SwiftyJSON in Frameworks */,
 				881E214B2755B79F002E1D13 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -82,7 +82,6 @@
 				8880370627412563006E5254 /* RegisterViewController.swift */,
 				8880370127412563006E5254 /* UserListViewController.swift */,
 				8880370527412563006E5254 /* UserTableViewCell.swift */,
-				8880370327412563006E5254 /* ViewController.swift */,
 				888036F227412510006E5254 /* Main.storyboard */,
 				888036F527412513006E5254 /* Assets.xcassets */,
 				888036F727412513006E5254 /* LaunchScreen.storyboard */,
@@ -111,6 +110,7 @@
 			name = HandsOnProject;
 			packageProductDependencies = (
 				881E214A2755B79F002E1D13 /* Alamofire */,
+				88CDCDE4276B1FA800DD5AF6 /* SwiftyJSON */,
 			);
 			productName = HandsOnProject;
 			productReference = 888036E927412510006E5254 /* HandsOnProject.app */;
@@ -142,6 +142,7 @@
 			mainGroup = 888036E027412510006E5254;
 			packageReferences = (
 				881E21492755B79F002E1D13 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				88CDCDE3276B1FA800DD5AF6 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = 888036EA27412510006E5254 /* Products */;
 			projectDirPath = "";
@@ -173,7 +174,6 @@
 				884CB3122742245C006AB2DF /* AddViewController.swift in Sources */,
 				88C61916274B873B00724AA0 /* Location.swift in Sources */,
 				8880370D27412563006E5254 /* RegisterViewController.swift in Sources */,
-				8880370A27412563006E5254 /* ViewController.swift in Sources */,
 				8880370B27412563006E5254 /* ChattingViewController.swift in Sources */,
 				888036ED27412510006E5254 /* AppDelegate.swift in Sources */,
 				8880370827412563006E5254 /* UserListViewController.swift in Sources */,
@@ -408,6 +408,14 @@
 				kind = branch;
 			};
 		};
+		88CDCDE3276B1FA800DD5AF6 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -415,6 +423,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 881E21492755B79F002E1D13 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		88CDCDE4276B1FA800DD5AF6 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88CDCDE3276B1FA800DD5AF6 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

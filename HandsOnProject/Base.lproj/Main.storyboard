@@ -23,14 +23,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="아이디를 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qpb-Ce-uo4">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="qqq@email.com" borderStyle="roundedRect" placeholder="아이디를 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qpb-Ce-uo4">
                                 <rect key="frame" x="20" y="314.5" width="374" height="34"/>
                                 <color key="backgroundColor" red="0.67843137254901964" green="0.6705882352941176" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.1764705882" green="0.19215686269999999" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호를 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ciu-4e-XAd">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="pass" borderStyle="roundedRect" placeholder="비밀번호를 입력해주세요." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ciu-4e-XAd">
                                 <rect key="frame" x="20" y="368.5" width="374" height="34"/>
                                 <color key="backgroundColor" red="0.67843137249999996" green="0.6705882353" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.1764705882" green="0.19215686269999999" blue="0.6705882353" alpha="1" colorSpace="calibratedRGB"/>
@@ -84,13 +84,13 @@
         <!--지역 뉴스-->
         <scene sceneID="T8p-mY-T75">
             <objects>
-                <viewController id="ISS-C3-dip" customClass="UserListViewController" customModule="HandsOnProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Chat" id="ISS-C3-dip" customClass="UserListViewController" customModule="HandsOnProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xdZ-wy-x9J">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1XW-Fq-fxC">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UserTableViewCell" rowHeight="82" id="tK4-ZS-50x" customClass="UserTableViewCell" customModule="HandsOnProject" customModuleProvider="target">
@@ -172,7 +172,7 @@
                     <navigationItem key="navigationItem" title="지역 뉴스" id="8y7-Zq-pZI">
                         <barButtonItem key="leftBarButtonItem" title="Item" id="oJv-fx-HWo">
                             <connections>
-                                <segue destination="XBe-Qr-zbm" kind="show" id="qF0-pl-1Ou"/>
+                                <action selector="createButtonClicked:" destination="ISS-C3-dip" id="9QT-mY-sfa"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="gMr-Ww-Wo1">
@@ -181,11 +181,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="usersTableView" destination="1XW-Fq-fxC" id="FEH-Ax-ea4"/>
+                        <segue destination="tGX-b2-n2L" kind="show" id="s7k-CM-bet"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WLc-ut-AEl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3042.0289855072465" y="-519.64285714285711"/>
+            <point key="canvasLocation" x="2977" y="-520"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="WDc-yq-ehv">
@@ -306,42 +307,16 @@
             </objects>
             <point key="canvasLocation" x="-870" y="-175"/>
         </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="QJz-CC-tyP">
-            <objects>
-                <tabBarController storyboardIdentifier="Chat" automaticallyAdjustsScrollViewInsets="NO" id="0xx-Ii-HhR" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="A34-W7-Ujv"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IGl-5X-9cr">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="phE-Be-INs" kind="relationship" relationship="viewControllers" id="WYL-vL-XL2"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SXE-Co-DGy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1051" y="-175"/>
-        </scene>
         <!--뉴스 작성-->
         <scene sceneID="OOf-ro-5q6">
             <objects>
-                <viewController id="XBe-Qr-zbm" customClass="AddViewController" customModule="HandsOnProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddViewController" id="XBe-Qr-zbm" customClass="AddViewController" customModule="HandsOnProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6dA-cI-o6u">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SY1-lr-hTW">
-                                <rect key="frame" x="20" y="258" width="374" height="555"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zr6-Sc-RDe">
-                                <rect key="frame" x="20" y="88" width="374" height="150"/>
+                                <rect key="frame" x="20" y="44" width="374" height="150"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="FbQ-D4-J6P">
                                         <rect key="frame" x="30" y="0.0" width="314" height="150"/>
@@ -357,6 +332,13 @@
                                     <constraint firstAttribute="height" constant="150" id="vyY-Cz-VII"/>
                                 </constraints>
                             </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SY1-lr-hTW">
+                                <rect key="frame" x="20" y="214" width="374" height="648"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hB1-HO-iYu"/>
                         <color key="backgroundColor" red="0.68627450980000004" green="0.84313725490000002" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -393,7 +375,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xCV-S4-Q82" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3041" y="181"/>
+            <point key="canvasLocation" x="2999" y="199"/>
         </scene>
         <!--Chatting View Controller-->
         <scene sceneID="c3Y-Va-Hu0">
@@ -404,7 +386,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="2" translatesAutoresizingMaskIntoConstraints="NO" id="o4A-EU-DKw">
-                                <rect key="frame" x="20" y="74" width="374" height="150"/>
+                                <rect key="frame" x="20" y="118" width="374" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="aeD-Wv-CvG"/>
                                 </constraints>
@@ -423,7 +405,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘의 뉴스는 무엇일까요? 다같이 새로운 뉴스를 작성해봅시다" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBd-kN-hlM">
-                                <rect key="frame" x="20" y="249" width="365" height="372"/>
+                                <rect key="frame" x="20" y="293" width="365" height="328"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -456,11 +438,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Hqf-Nw-8vF">
-                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="w8G-DQ-MM3">
-                            <connections>
-                                <action selector="barButton:" destination="tGX-b2-n2L" id="oHf-ho-kFe"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="trash" id="w8G-DQ-MM3">
+                                <connections>
+                                    <action selector="barButton:" destination="tGX-b2-n2L" id="oHf-ho-kFe"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="신고" id="1ty-vG-wOR">
+                                <connections>
+                                    <action selector="reportButtonClicked:" destination="tGX-b2-n2L" id="Bfl-UT-Bll"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="newsContent" destination="JBd-kN-hlM" id="iHY-c8-UuJ"/>
@@ -468,7 +457,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ayd-Np-57C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3910.144927536232" y="-520.3125"/>
+            <point key="canvasLocation" x="3854" y="-520"/>
         </scene>
         <!--뉴스 목록-->
         <scene sceneID="ln5-Ak-pWt">
