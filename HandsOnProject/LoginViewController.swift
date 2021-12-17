@@ -25,12 +25,15 @@ class LoginViewController: UIViewController {
             print(email, password)
             login(email: email, password: password)
         }
-//
-        
+
+
 //        createNews()
         
     }
     
+    
+   
+
     
     func login(email: String, password: String) {
             let url = "https://sindy-nick.site/app/user/log-in"

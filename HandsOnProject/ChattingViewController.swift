@@ -38,6 +38,9 @@ class ChattingViewController: UIViewController {
         
     
         vc.nickName = nickName
+        vc.newsID = newsID
+        vc.jwt = jwt
+        vc.userId = userIdx
 
         navigationController?.pushViewController(vc, animated: true)
     }
