@@ -81,9 +81,16 @@ extension UserListViewController: UITableViewDelegate, UITableViewDataSource {
         
         let row = data[indexPath.row]
         cell.userNameLabel.text = row["title"].stringValue
-        cell.userStatusLabel.text = row["context"].stringValue
+        let content = row["context"].stringValue.replacingOccurrences(of: "\n", with: "")
+        cell.userStatusLabel.text = content
         
-        print(row) // 개시글 데이터
+        
+        let url = URL(string: row["image"].stringValue)
+        cell.userImage.kf.setImage(with: url)
+        
+        
+        
+        
         return cell
     }
     
@@ -102,7 +109,7 @@ extension UserListViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        70
+        80
     }
     
 }

@@ -10,6 +10,25 @@ import Alamofire
 import PhotosUI
 
 
+extension AddViewController : UITextViewDelegate{
+    func textViewDidBeginEditing(_ textView: UITextView) {
+            if textView.textColor == UIColor.lightGray {
+                textView.text = nil
+                textView.textColor = UIColor.black
+            }
+            
+        }
+        // TextView Place Holder
+        func textViewDidEndEditing(_ textView: UITextView) {
+            if textView.text.isEmpty {
+                textView.text = "뉴스를 입력해주세요."
+                textView.textColor = UIColor.lightGray
+            }
+        }
+
+
+}
+
 class AddViewController: UIViewController {
 
     @IBOutlet weak var newsTextView: UITextView!
@@ -19,17 +38,26 @@ class AddViewController: UIViewController {
     var userIdx: Int?
     var location: String?
     
+    func placeholderSetting() {
+
+        newsTextView.text = "제가 바로 PlaceHolder입니다."
+        newsTextView.textColor = UIColor.lightGray
+        newsTextView.layer.borderWidth = 2
+        newsTextView.layer.borderColor = UIColor.black.cgColor
+    }
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(jwt)
-        print(userIdx)
-        print(location)
+        placeholderSetting()
     }
     
     @IBAction func saveButtonClicked(_ sender: UIBarButtonItem) {
         
         if let titleIndex = newsTextView.text.firstIndex(of: "\n"){
             let title = newsTextView.text[..<titleIndex]
+            
+        
             let content = newsTextView.text[titleIndex...]
             createNews(title: String(title), content: String(content))
         }
@@ -51,7 +79,7 @@ class AddViewController: UIViewController {
                     "userIdx":userIdx!,
                     "title": title,
                     "context":content,
-                    "image": "DSfasdf",
+                    "image": "https://user-images.githubusercontent.com/48948578/146629544-55d2f478-101d-4b32-b115-684eafc25838.jpeg",
                     "location":location!] as [String : Any]
 
                    // httpBody 에 parameters 추가

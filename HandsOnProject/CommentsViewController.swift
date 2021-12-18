@@ -24,12 +24,13 @@ class CommentsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         seeComment()
+        self.title = "댓글"
+        commentsTableView.rowHeight = UITableView.automaticDimension
     }
 
     @IBAction func confirmButton(_ sender: UIButton) {
-      
+
         createComment()
-//        seeComment()
     }
     
     func createComment(){
@@ -108,10 +109,13 @@ extension CommentsViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.writer.text = data[indexPath.row]["nickname"].stringValue
         cell.content.text = data[indexPath.row]["context"].stringValue
+        let date = data[indexPath.row]["createdAt"].stringValue
+        let index = date.firstIndex(of: "T")!
+        cell.dateLabel.text = String(date[..<index])
         
         return cell
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        70
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        70
+//    }
 }

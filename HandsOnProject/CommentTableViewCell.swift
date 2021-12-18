@@ -9,6 +9,7 @@ import UIKit
 
 class CommentTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var content: UILabel!
     @IBOutlet weak var writer: UILabel!
     override func awakeFromNib() {
